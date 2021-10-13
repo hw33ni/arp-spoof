@@ -299,12 +299,7 @@ int main(int argc, char* argv[]) {
 		SpoofTable sTable;
 		EthArpPacket a;
 		
-
-		sTable.a_ip = a_ip;
-		sTable.a_mac = a_mac;
-		
-		sTable.s_ip = Ip(argv[2*i]);
-		sTable.t_ip = Ip(argv[2*i+1]);
+		InitTable(&sTable, a_ip, a_mac, Ip(argv[2*i]), Ip(argv[2*i+1]));
 
 		if(!arpTable.count(sTable.s_ip))
 			arpTable[sTable.s_ip] = getMac(handle, a_mac, a_ip, sTable.s_ip);
